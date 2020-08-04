@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <strong class="modal-title">{{ options.title }}</strong>
+</div>
+
+<div *ngIf="options.message" class="modal-body">
+  <p>{{ options.message }}</p>
+</div>
+
+<div class="modal-footer" *ngIf="options.showButtons">
+  <button
+    type="button"
+    [ngClass]="options.confirmButtonClass"
+    (click)="activeModal.close()"
+  >
+    {{ options.confirmButtonText }}
+  </button>
+</div>

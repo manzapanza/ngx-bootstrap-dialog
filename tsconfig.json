@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-bootstrap-dialog": [
+        "dist/ngx-bootstrap-dialog/ngx-bootstrap-dialog",
+        "dist/ngx-bootstrap-dialog"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
