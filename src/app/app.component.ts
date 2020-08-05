@@ -8,34 +8,27 @@ import { NgxBootstrapDialogService } from './../../projects/ngx-bootstrap-dialog
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'ngx-bootstrap-dialog-demo';
-  constructor(private ngxBootstrapDialogService: NgxBootstrapDialogService) {}
+  constructor(private dialog: NgxBootstrapDialogService) {}
 
   openDialogAlert() {
-    this.ngxBootstrapDialogService
+    this.dialog
       .alert({
-        title: 'Alert title',
-        message: 'Message alert',
+        title: 'Dialog Alert Title',
+        message:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet finibus mi eget mattis.',
       })
-      .then(() => {
-        console.log('OK');
-      })
-      .catch(() => {
-        console.log('Cancel');
-      });
+      .then(() => console.log('Confimed!'))
+      .catch(() => console.log('Dismissed!'));
   }
 
   openDialogConfirm() {
-    this.ngxBootstrapDialogService
+    this.dialog
       .confirm({
-        title: 'Title',
-        message: 'Message',
+        title: 'Dialog Confirm Title',
+        message:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet finibus mi eget mattis.',
       })
-      .then(() => {
-        console.log('OK');
-      })
-      .catch(() => {
-        console.log('Cancel');
-      });
+      .then(() => console.log('Confimed!'))
+      .catch(() => console.log('Dismissed!'));
   }
 }
