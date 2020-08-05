@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { NgxBootstrapDialogAlertOptions } from './../ngx-bootstrap-dialog.service';
+import { NgxBootstrapDialogAlertOptions } from './../ngx-bootstrap-dialog.config';
 
 @Component({
   selector: 'ngx-bootstrap-dialog-alert',

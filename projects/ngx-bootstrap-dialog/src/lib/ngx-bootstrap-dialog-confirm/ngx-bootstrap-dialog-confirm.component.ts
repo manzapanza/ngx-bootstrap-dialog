@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { NgxBootstrapDialogConfirmOptions } from './../ngx-bootstrap-dialog.service';
+import { NgxBootstrapDialogConfirmOptions } from './../ngx-bootstrap-dialog.config';
 
 @Component({
   selector: 'ngx-ngx-bootstrap-dialog-confirm',
