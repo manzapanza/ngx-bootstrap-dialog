@@ -1,47 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgbModal, NgbModalOptions, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { TestBed } from '@angular/core/testing';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
-import { NgxBootstrapDialogAlertComponent } from './ngx-bootstrap-dialog-alert/ngx-bootstrap-dialog-alert.component';
 import {
+  alertOptions,
+  confirmOptions,
+  globalDefaultAlertOptions,
+  globalDefaultConfirmOptions,
+  mergedAlertOptions,
+  mergedGlobalDefaultAlertOptions,
+} from './ngx-bootstrap-dialog.common.spec';
+import {
+  NGX_BOOTSTRAP_ALERT_DEFAULT_OPTIONS,
+  NGX_BOOTSTRAP_CONFIRM_DEFAULT_OPTIONS,
   NgxBootstrapDialogAlertDeafultOptions,
-  NgxBootstrapDialogAlertOptions,
-  NgxBootstrapDialogConfirmDefaultOptions,
-  NgxBootstrapDialogConfirmOptions,
-  NgxBootstrapDialogService,
-} from './ngx-bootstrap-dialog.service';
+} from './ngx-bootstrap-dialog.config';
+import { NgxBootstrapDialogService } from './ngx-bootstrap-dialog.service';
+import { NgxBootstrapDialogComponent } from './ngx-bootstrap-dialog/ngx-bootstrap-dialog.component';
 
 describe('NgxBootstrapDialogService', () => {
   let service: NgxBootstrapDialogService;
   let modalSpy: jasmine.SpyObj<NgbModal>;
-  let fixture: ComponentFixture<NgxBootstrapDialogAlertComponent>;
-
-  const alertOptions: NgxBootstrapDialogAlertOptions = {
-    title: 'Title',
-    message: 'Message',
-  };
-
-  const defaultAlertOptions = new NgxBootstrapDialogAlertDeafultOptions();
-
-  const mergedAlterOptions = {
-    ...defaultAlertOptions,
-    ...alertOptions,
-  };
-
-  const confirmOptions: NgxBootstrapDialogConfirmOptions = {
-    title: 'Title',
-    message: 'Message',
-  };
-
-  const defaultConfirmOptions = new NgxBootstrapDialogConfirmDefaultOptions();
-
-  const mergedConfirmOptions = {
-    ...defaultConfirmOptions,
-    ...confirmOptions,
-  };
-
-  const ngbModalOptions: NgbModalOptions = {
-    size: defaultAlertOptions.size,
-  };
 
   const dialogRefStub: Partial<NgbModalRef> = {
     componentInstance: {
@@ -50,81 +28,134 @@ describe('NgxBootstrapDialogService', () => {
     result: new Promise((res) => true),
   };
 
-  beforeEach(() => {
-    const spy = jasmine.createSpyObj('NgbModal', ['open']);
-
-    TestBed.configureTestingModule({
-      providers: [
-        NgxBootstrapDialogService,
-        { provide: NgbModal, useValue: spy },
-      ],
-    });
-
-    service = TestBed.inject(NgxBootstrapDialogService);
-    modalSpy = TestBed.inject(NgbModal) as jasmine.SpyObj<NgbModal>;
-
-    modalSpy.open.and.returnValue(dialogRefStub as NgbModalRef);
-  });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
-  describe('dialog method', () => {
-    let dialogRef;
-
+  describe('Without global config', () => {
     beforeEach(() => {
-      dialogRef = service.dialog(
-        fixture,
-        alertOptions,
-        new NgxBootstrapDialogAlertDeafultOptions(),
-      );
+      const spy = jasmine.createSpyObj('NgbModal', ['open']);
+
+      TestBed.configureTestingModule({
+        providers: [
+          NgxBootstrapDialogService,
+          { provide: NgbModal, useValue: spy },
+        ],
+      });
+
+      service = TestBed.inject(NgxBootstrapDialogService);
+      modalSpy = TestBed.inject(NgbModal) as jasmine.SpyObj<NgbModal>;
+
+      modalSpy.open.and.returnValue(dialogRefStub as NgbModalRef);
     });
 
-    it('should call modal.open', () => {
-      expect(modalSpy.open).toHaveBeenCalledWith(fixture, ngbModalOptions);
+    it('should be created', () => {
+      expect(service).toBeTruthy();
     });
 
-    it('should merge options with defaultOptions and pass to the modal component', () => {
-      expect(dialogRef.componentInstance.options).toEqual(
-        jasmine.objectContaining(mergedAlterOptions),
-      );
+    describe('dialog method', () => {
+      let dialogRef;
+
+      beforeEach(() => {
+        dialogRef = service.dialog(
+          NgxBootstrapDialogComponent,
+          new NgxBootstrapDialogAlertDeafultOptions(),
+          null,
+          alertOptions,
+        );
+      });
+
+      it('should call modal.open', () => {
+        expect(modalSpy.open).toHaveBeenCalledWith(
+          NgxBootstrapDialogComponent,
+          mergedAlertOptions.ngbModalOptions,
+        );
+      });
+
+      it('should merge options with defaultOptions and pass to the modal component', () => {
+        expect(dialogRef.componentInstance.options).toEqual(
+          jasmine.objectContaining(mergedAlertOptions),
+        );
+      });
+
+      it('should returns a modal instance with result promise', () => {
+        expect(dialogRef.result.then).toBeDefined();
+      });
     });
 
-    it('should returns a modal instance with result promise', () => {
-      expect(dialogRef.result.then).toBeDefined();
+    describe('alert method', () => {
+      let promise;
+
+      beforeEach(() => {
+        promise = service.alert(alertOptions);
+      });
+
+      it('should returns a promise', () => {
+        expect(promise.then).toBeDefined();
+      });
+
+      it('should set alertRef instance', () => {
+        expect(service.alertRef).toBeDefined();
+      });
+    });
+
+    describe('confirm method', () => {
+      let promise;
+
+      beforeEach(() => {
+        promise = service.confirm(confirmOptions);
+      });
+
+      it('should returns a promise', () => {
+        expect(promise.then).toBeDefined();
+      });
+
+      it('should set confirmRef instance', () => {
+        expect(service.confirmRef).toBeDefined();
+      });
     });
   });
 
-  describe('alert method', () => {
-    let promise;
-
+  describe('With global config', () => {
     beforeEach(() => {
-      promise = service.alert(alertOptions);
+      const spy = jasmine.createSpyObj('NgbModal', ['open']);
+
+      TestBed.configureTestingModule({
+        providers: [
+          NgxBootstrapDialogService,
+          { provide: NgbModal, useValue: spy },
+          {
+            provide: NGX_BOOTSTRAP_ALERT_DEFAULT_OPTIONS,
+            useValue: globalDefaultAlertOptions,
+          },
+          {
+            provide: NGX_BOOTSTRAP_CONFIRM_DEFAULT_OPTIONS,
+            useValue: globalDefaultConfirmOptions,
+          },
+        ],
+      });
+
+      service = TestBed.inject(NgxBootstrapDialogService);
+      modalSpy = TestBed.inject(NgbModal) as jasmine.SpyObj<NgbModal>;
+
+      modalSpy.open.and.returnValue(dialogRefStub as NgbModalRef);
     });
 
-    it('should returns a promise', () => {
-      expect(promise.then).toBeDefined();
-    });
+    describe('dialog method', () => {
+      let promise;
 
-    it('should set alertRef instance', () => {
-      expect(service.alertRef).toBeDefined();
-    });
-  });
+      beforeEach(() => {
+        promise = service.alert(alertOptions);
+      });
 
-  describe('confirm method', () => {
-    let promise;
+      it('should merge options with defaultOptions and pass to the modal component', () => {
+        expect(service.alertRef.componentInstance.options).toEqual(
+          jasmine.objectContaining({
+            ...mergedGlobalDefaultAlertOptions,
+            ...alertOptions,
+          }),
+        );
+      });
 
-    beforeEach(() => {
-      promise = service.alert(confirmOptions);
-    });
-
-    it('should returns a promise', () => {
-      expect(promise.then).toBeDefined();
-    });
-
-    it('should set alertRef instance', () => {
-      expect(service.alertRef).toBeDefined();
+      it('should returns a modal instance with result promise', () => {
+        expect(promise.then).toBeDefined();
+      });
     });
   });
 });
