@@ -92,17 +92,20 @@ The promise is resolved by clicking the confirm button and rejected when the dia
     .catch(() => console.log('Dismissed!'));
 ```
 
-### NgxBootstrapDialogAlertOptions:
+### Alert options and default values (NgxBootstrapDialogOptions):
 
-| Option             | Type            | Default value     | Description                                                                                                                               |
-| ------------------ | --------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| title              | string          | ''                | Alert title                                                                                                                               |
-| message            | string          | ''                | Message title                                                                                                                             |
-| confirmButtonText  | string          | 'Confirm'         | Button confirm label                                                                                                                      |
-| confirmButtonClass | string          | 'btn btn-primary' | Button confirm css class                                                                                                                  |
-| showCloseButton    | boolean         | false             | Show close button                                                                                                                         |
-| showFooterButtons  | boolean         | true              | Show footer buttons                                                                                                                       |
-| ngbModalOptions    | NgbModalOptions | null              | Options available for NgbModal.open() method [see NgbModalOptions](https://ng-bootstrap.github.io/#/components/modal/api#NgbModalOptions) |
+| Option             | Type            | Default value       | Description                                                                                                                               |
+| ------------------ | --------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| title              | string          | ''                  | Alert title                                                                                                                               |
+| message            | string          | ''                  | Message title                                                                                                                             |
+| confirmButtonLabel | string          | 'Confirm'           | Button confirm label                                                                                                                      |
+| confirmButtonClass | string          | 'btn btn-primary'   | Button confirm css class                                                                                                                  |
+| showConfirmButton  | boolean         | true                | Show confirm button                                                                                                                       |
+| cancelButtonLabel  | string          | 'Cancel'            | Button cancel label                                                                                                                       |
+| cancelButtonClass  | string          | 'btn btn-secondary' | Button cancel css class                                                                                                                   |
+| showCancelButton   | boolean         | false               | Show cancel button                                                                                                                        |
+| showCloseButton    | boolean         | false               | Show close button                                                                                                                         |
+| ngbModalOptions    | NgbModalOptions | null                | Options available for NgbModal.open() method [see NgbModalOptions](https://ng-bootstrap.github.io/#/components/modal/api#NgbModalOptions) |
 
 ### Method Confirm:
 
@@ -123,18 +126,19 @@ The promise is resolved by clicking the confirm button and rejected by clicking 
     .catch(() => console.log('Canceled or dismissed!'));
 ```
 
-### NgxBootstrapDialogAlertOptions:
+### Confirm options and default values (NgxBootstrapDialogOptions):
 
 | Option             | Type            | Default value       | Description                                                                                                                               |
 | ------------------ | --------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | title              | string          | ''                  | Alert title                                                                                                                               |
 | message            | string          | ''                  | Message title                                                                                                                             |
-| confirmButtonText  | string          | 'Confirm'           | Confirm button label                                                                                                                      |
-| confirmButtonClass | string          | 'btn btn-primary'   | Confirm button css class                                                                                                                  |
-| cancelButtonText   | string          | 'Cancel'            | Cancel button label                                                                                                                       |
-| cancelButtonClass  | string          | 'btn btn-secondary' | Cancel button css class                                                                                                                   |
+| confirmButtonLabel | string          | 'Confirm'           | Button confirm label                                                                                                                      |
+| confirmButtonClass | string          | 'btn btn-primary'   | Button confirm css class                                                                                                                  |
+| showConfirmButton  | boolean         | true                | Show confirm button                                                                                                                       |
+| cancelButtonLabel  | string          | 'Cancel'            | Button cancel label                                                                                                                       |
+| cancelButtonClass  | string          | 'btn btn-secondary' | Button cancel css class                                                                                                                   |
+| showCancelButton   | boolean         | true                | Show cancel button                                                                                                                        |
 | showCloseButton    | boolean         | false               | Show close button                                                                                                                         |
-| showFooterButtons  | boolean         | true                | Show footer buttons                                                                                                                       |
 | ngbModalOptions    | NgbModalOptions | null                | Options available for NgbModal.open() method [see NgbModalOptions](https://ng-bootstrap.github.io/#/components/modal/api#NgbModalOptions) |
 
 ### Global config
