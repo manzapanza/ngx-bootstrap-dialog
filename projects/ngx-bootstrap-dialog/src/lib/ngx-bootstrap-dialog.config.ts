@@ -1,47 +1,48 @@
 import { InjectionToken } from '@angular/core';
 import { NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
-export interface LoadingBarConfig {
-  latencyThreshold?: number;
-}
-
-export interface NgxBootstrapDialogAlertOptions {
+export interface NgxBootstrapDialogOptions {
   title: string;
   message?: string;
-  confirmButtonText?: string;
+
+  confirmButtonLabel?: string;
   confirmButtonClass?: string;
-  showCloseButtons?: boolean;
-  showFooterButtons?: boolean;
+  showConfirmButton?: boolean;
+
+  cancelButtonLabel?: string;
+  cancelButtonClass?: string;
+  showCancelButton?: boolean;
+
+  showCloseButton?: boolean;
+
   ngbModalOptions?: NgbModalOptions;
 }
 
-export interface NgxBootstrapDialogConfirmOptions
-  extends NgxBootstrapDialogAlertOptions {
-  confirmButtonText?: string;
-  cancelButtonText?: string;
-  cancelButtonClass?: string;
-}
-
-export class NgxBootstrapDialogAlertDeafultOptions {
+export class NgxBootstrapDialogAlertDeafultOptions
+  implements NgxBootstrapDialogOptions {
   title = '';
   message = '';
-  confirmButtonText = 'Confirm';
+
+  confirmButtonLabel = 'Confirm';
   confirmButtonClass = 'btn btn-primary';
+  showConfirmButton = true;
+
+  cancelButtonLabel = 'Cancel';
+  cancelButtonClass = 'btn btn-secondary';
+  showCancelButton = false;
+
   showCloseButtons = false;
-  showFooterButtons = true;
-  showLoading = false;
   ngbModalOptions = null;
 }
 
 export class NgxBootstrapDialogConfirmDefaultOptions extends NgxBootstrapDialogAlertDeafultOptions {
-  cancelButtonText = 'Cancel';
-  cancelButtonClass = 'btn btn-secondary';
+  showCancelButton = true;
 }
 
 export const NGX_BOOTSTRAP_ALERT_DEFAULT_OPTIONS = new InjectionToken<
-  NgxBootstrapDialogAlertOptions
+  Partial<NgxBootstrapDialogOptions>
 >('NGX_BOOTSTRAP_ALERT_DEFAULT_OPTIONS');
 
 export const NGX_BOOTSTRAP_CONFIRM_DEFAULT_OPTIONS = new InjectionToken<
-  NgxBootstrapDialogConfirmOptions
+  Partial<NgxBootstrapDialogOptions>
 >('NGX_BOOTSTRAP_CONFIRM_DEFAULT_OPTIONS');

@@ -2,10 +2,10 @@
   <h4 class="modal-title">{{ options.title }}</h4>
   <button
     type="button"
-    class="close"
+    class="btn-close close"
     aria-label="Close"
     (click)="activeModal.dismiss()"
-    *ngIf="options.showCloseButtons"
+    *ngIf="options.showCloseButton"
   >
     <span aria-hidden="true">&times;</span>
   </button>
@@ -15,21 +15,25 @@
   {{ options.message }}
 </div>
 
-<div class="modal-footer" *ngIf="options.showFooterButtons">
+<div class="modal-footer">
   <button
     type="button"
+    class="btn-cancel"
     [ngClass]="options.cancelButtonClass"
     (click)="activeModal.dismiss()"
+    *ngIf="options.showCancelButton"
   >
-    {{ options.cancelButtonText }}
+    {{ options.cancelButtonLabel }}
   </button>
 
   <button
     type="button"
+    class="btn-confirm"
     [ngClass]="options.confirmButtonClass"
     (click)="activeModal.close()"
+    *ngIf="options.showConfirmButton"
     ngbAutofocus
   >
-    {{ options.confirmButtonText }}
+    {{ options.confirmButtonLabel }}
   </button>
 </div>
