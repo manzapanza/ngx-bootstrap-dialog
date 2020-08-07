@@ -1,0 +1,36 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:12.16.2-browsers
+    steps:
+      # Checkout the code from the branch into the working_directory
+      - checkout
+      # Log the current branch
+      - run:
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
+      # Restore local dependencies from cache
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+      # Install project dependencies
+      - run:
+          name: Install local dependencies
+          command: npm install
+      # Cache local dependencies if they don't exist
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      # Lint the source code
+      - run:
+          name: Linting
+          command: npm run lint ngx-bootstrap-dialog
+      # Test the source code
+      - run:
+          name: Run unit tests
+          command: npm test ngx-bootstrap-dialog -- --no-watch --no-progress --browsers=ChromeHeadlessCI

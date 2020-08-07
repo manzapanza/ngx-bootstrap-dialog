@@ -134,8 +134,7 @@
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
             "tsConfig": "projects/ngx-bootstrap-dialog/tsconfig.lib.json",
-            "project": "projects/ngx-bootstrap-dialog/ng-package.json",
-            "polyfills": "src/polyfills.ts"
+            "project": "projects/ngx-bootstrap-dialog/ng-package.json"
           },
           "configurations": {
             "production": {
