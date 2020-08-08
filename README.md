@@ -2,6 +2,8 @@
 
 Simple and customizable dialogs for Angular built on top of [NG Bootstrap](https://ng-bootstrap.github.io/#/home).
 
+[![Build Status](https://circleci.com/gh/manzapanza/ngx-bootstrap-dialog.svg?style=shield)](https://circleci.com/gh/manzapanza/ngx-bootstrap-dialog)
+
 ## Dependencies
 
 | ngx-bootstrap-dialog | ng-bootstrap | Angular |
