@@ -29,8 +29,12 @@ jobs:
       # Lint the source code
       - run:
           name: Linting
-          command: npm run lint ngx-bootstrap-dialog
+          command: npm run lint
       # Test the source code
       - run:
           name: Run unit tests
-          command: npm test ngx-bootstrap-dialog -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+          command: npm run test:ci
+      # Coverage report
+      - run:
+          name: Run coverage report
+          command: npm run coverage

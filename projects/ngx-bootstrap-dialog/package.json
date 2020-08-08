@@ -1,6 +1,7 @@
 {
   "name": "ngx-bootstrap-dialog",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Simple and customizable dialogs for Angular built on top of NG Bootstrap",
   "peerDependencies": {
     "@angular/common": "^9.1.12",
     "@angular/core": "^9.1.12",
@@ -9,5 +10,21 @@
   },
   "dependencies": {
     "tslib": "^1.10.0"
-  }
+  },
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "ngx",
+    "bootstrap",
+    "dialog",
+    "ng-bootstrap"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manzapanza/ngx-bootstrap-dialog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/manzapanza/ngx-bootstrap-dialog/issues"
+  },
+  "homepage": "https://github.com/manzapanza/ngx-bootstrap-dialog#readme"
 }
