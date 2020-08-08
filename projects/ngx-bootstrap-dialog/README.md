@@ -13,7 +13,7 @@ Simple and customizable dialogs for Angular built on top of [NG Bootstrap](https
 
 ## Demo
 
-Please check the demo demos on Stackblitz!
+Please check the [demo](https://manzapanza.github.io/ngx-bootstrap-dialog)!
 
 ![Dialog Alert](src/assets/dialog-alert-print.png)
 ![Dialog Confirm](src/assets/dialog-confirm-print.png)
