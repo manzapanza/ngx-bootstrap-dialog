@@ -5,6 +5,9 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: circleci/node:12.16.2-browsers
+    filters:
+      branches:
+        ignore: gh-pages
     steps:
       # Checkout the code from the branch into the working_directory
       - checkout
