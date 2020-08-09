@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NgxBootstrapDialogService } from './../../projects/ngx-bootstrap-dialog/src/lib/ngx-bootstrap-dialog.service';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { NgxBootstrapDialogService } from './../../projects/ngx-bootstrap-dialog
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  environment = environment;
+
   constructor(private dialog: NgxBootstrapDialogService) {}
 
   openDialogAlert() {
