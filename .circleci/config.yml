@@ -5,39 +5,65 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: circleci/node:12.16.2-browsers
-    filters:
-      branches:
-        ignore: gh-pages
     steps:
-      # Checkout the code from the branch into the working_directory
       - checkout
-      # Log the current branch
       - run:
           name: Show current branch
           command: echo ${CIRCLE_BRANCH}
-      # Restore local dependencies from cache
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package-lock.json" }}
             - v1-dependencies-
-      # Install project dependencies
       - run:
           name: Install local dependencies
           command: npm install
-      # Cache local dependencies if they don't exist
       - save_cache:
           key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
-      # Lint the source code
       - run:
           name: Linting
-          command: npm run lint
-      # Test the source code
+          command: npm run lint:lib
       - run:
           name: Run unit tests
-          command: npm run test:ci
-      # Coverage report
+          command: npm run test:lib:ci
       - run:
           name: Run coverage report
-          command: npm run coverage
+          command: npm run coverage:lib
+
+  publish_demo:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:12.16.2-browsers
+    steps:
+      - checkout
+      - run:
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install local dependencies
+          command: npm install
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Run publish demo
+          command: npm run publish:demo:ci
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: gh-pages
+      - publish_demo:
+          filters:
+            branches:
+              only: master

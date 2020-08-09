@@ -121,6 +121,10 @@
               "devServerTarget": "ngx-bootstrap-dialog-demo:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     },
