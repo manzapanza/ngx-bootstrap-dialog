@@ -55,6 +55,33 @@ jobs:
           name: Run publish demo
           command: npm run publish:demo:ci
 
+  publish_lib:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:12.16.2-browsers
+    steps:
+      - checkout
+      - run:
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install local dependencies
+          command: npm install
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Run build lib
+          command: npm run build:lib
+      - run:
+          name: Run publish lib
+          command: npm run publish:lib
+
 workflows:
   version: 2
   workflow:
@@ -64,6 +91,14 @@ workflows:
             branches:
               ignore: gh-pages
       - publish_demo:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - publish_lib:
+          requires:
+            - build
           filters:
             branches:
               only: master

@@ -1,6 +1,6 @@
 {
   "name": "ngx-bootstrap-dialog",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "Simple and customizable dialogs for Angular built on top of NG Bootstrap",
   "peerDependencies": {
     "@angular/common": "^9.1.12",
