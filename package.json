@@ -1,7 +1,7 @@
 {
   "name": "ngx-bootstrap-dialog-demo",
   "description": "Simple and customizable dialogs for Angular built on top of NG Bootstrap",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "private": false,
   "license": "MIT",
   "scripts": {
