@@ -90,15 +90,16 @@ workflows:
           filters:
             branches:
               ignore: gh-pages
-      - publish_demo:
+      - publish_lib:
           requires:
             - build
           filters:
             branches:
               only: master
-      - publish_lib:
+      - publish_demo:
           requires:
             - build
+            - publish_lib
           filters:
             branches:
               only: master
