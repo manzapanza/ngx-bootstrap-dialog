@@ -5,20 +5,28 @@ Simple and customizable dialogs for Angular built on top of [NG Bootstrap](https
 [![Build Status](https://circleci.com/gh/manzapanza/ngx-bootstrap-dialog.svg?style=shield)](https://circleci.com/gh/manzapanza/ngx-bootstrap-dialog)
 [![Coverage Status](https://coveralls.io/repos/github/manzapanza/ngx-bootstrap-dialog/badge.svg?branch=master)](https://coveralls.io/github/manzapanza/ngx-bootstrap-dialog?branch=master)
 
-## Dependencies
-
-| ngx-bootstrap-dialog | ng-bootstrap | Angular |
-| -------------------- | ------------ | ------- |
-| 1.x.x                | 6.x.x        | 9.x.x   |
-
 ## Demo
 
-Please check the [demo](https://manzapanza.github.io/ngx-bootstrap-dialog)!
+Please check the demos:
+
+- [default config](https://stackblitz.com/edit/ngx-bootstrap-dialog-default-config)!
+- [custom config](https://stackblitz.com/edit/ngx-bootstrap-dialog-custom-config)!
+- [global config](https://stackblitz.com/edit/github-ns15vi-gpr1es)!
 
 ![Dialog Alert](src/assets/dialog-alert-print.png)
 ![Dialog Confirm](src/assets/dialog-confirm-print.png)
 
 ## Getting started
+
+### Install dependency:
+
+The only dependency is `@ng-bootstrap/ng-bootstrap`. Basically you can install it with:
+
+```
+ng add @ng-bootstrap/ng-bootstrap
+```
+
+For more informations, please check the [offical documentation](https://ng-bootstrap.github.io/#/getting-started#installation).
 
 ### Install:
 
