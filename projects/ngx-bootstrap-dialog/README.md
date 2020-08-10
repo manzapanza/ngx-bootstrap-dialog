@@ -11,7 +11,6 @@ Please check the demos:
 
 - [default config](https://stackblitz.com/edit/ngx-bootstrap-dialog-default-config)!
 - [custom config](https://stackblitz.com/edit/ngx-bootstrap-dialog-custom-config)!
-- [global config](https://stackblitz.com/edit/github-ns15vi-gpr1es)!
 
 ![Dialog Alert](src/assets/dialog-alert-print.png)
 ![Dialog Confirm](src/assets/dialog-confirm-print.png)
@@ -159,7 +158,10 @@ The global config can be adjusted by providing a value for `NGX_BOOTSTRAP_ALERT_
 ```
 //...
 import { NgxBootstrapDialogModule } from 'ngx-bootstrap-dialog';
-import { NGX_BOOTSTRAP_ALERT_DEFAULT_OPTIONS } from 'ngx-bootstrap-dialog';
+import {
+  NGX_BOOTSTRAP_ALERT_DEFAULT_OPTIONS,
+  NGX_BOOTSTRAP_CONFIRM_DEFAULT_OPTIONS,
+} from 'ngx-bootstrap-dialog';
 
 //....
 

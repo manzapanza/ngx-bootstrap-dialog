@@ -158,7 +158,10 @@ The global config can be adjusted by providing a value for `NGX_BOOTSTRAP_ALERT_
 ```
 //...
 import { NgxBootstrapDialogModule } from 'ngx-bootstrap-dialog';
-import { NGX_BOOTSTRAP_ALERT_DEFAULT_OPTIONS } from 'ngx-bootstrap-dialog';
+import {
+  NGX_BOOTSTRAP_ALERT_DEFAULT_OPTIONS,
+  NGX_BOOTSTRAP_CONFIRM_DEFAULT_OPTIONS,
+} from 'ngx-bootstrap-dialog';
 
 //....
 
