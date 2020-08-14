@@ -4,6 +4,10 @@ Simple and customizable dialogs for Angular built on top of [NG Bootstrap](https
 
 [![Build Status](https://circleci.com/gh/manzapanza/ngx-bootstrap-dialog.svg?style=shield)](https://circleci.com/gh/manzapanza/ngx-bootstrap-dialog)
 [![Coverage Status](https://coveralls.io/repos/github/manzapanza/ngx-bootstrap-dialog/badge.svg?branch=master)](https://coveralls.io/github/manzapanza/ngx-bootstrap-dialog?branch=master)
+[![NPM](https://img.shields.io/npm/l/ngx-bootstrap-dialog)](https://github.com/manzapanza/ngx-bootstrap-dialog/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/ngx-bootstrap-dialog)](https://www.npmjs.com/package/ngx-bootstrap-dialog)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/ngx-bootstrap-dialog.svg)](https://bundlephobia.com/result?p=ngx-bootstrap-dialog)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 ## Demo
 
